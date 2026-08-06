@@ -76,7 +76,7 @@ license: (ISC) Apache-2.0
 - Ajouter ce code snippet au début du fichier ``server.mjs``:
 
 ```
-import moment = from 'moment'
+import moment from 'moment'
 
 let start = moment.now();
 
@@ -97,10 +97,8 @@ let end = moment.now();
 - Ajouter ce code snippet au début du fichier ``server.mjs``:
 
 ```
-if (typeof localStorage === "undefined" || localStorage === null) {
-    var LocalStorage = require('node-localstorage').LocalStorage;
-    localStorage = new LocalStorage('./student-course.db')
-}
+import { LocalStorage } from 'node-localstorage';
+let localStorage = new LocalStorage('./student-course.db');
 
 localStorage.setItem('name', 'Toolu Xarala')
 console.log("Name: " + localStorage.getItem('name'))
@@ -114,7 +112,8 @@ console.log("Name: " + localStorage.getItem('name'))
 - Ajouter/Mettre à jour ce code snippet dans le fichier ``server.mjs``:
 
 ```
-const express = require('express')
+import express from 'express'
+
 const app = express()
 const port = 3000
 
