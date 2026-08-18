@@ -246,3 +246,24 @@ app.listen(port, () => {
 
 ## III. Micro-service/API de gestion des cours
 
+Ce projet a été complété et intègre désormais l'ensemble de la **Partie III** :
+
+### 🚀 Fonctionnalités implémentées
+- **Base de données SQLite** : Persistance intégrale dans `database.sqlite` (remplacement de `node-localstorage`).
+- **16 Endpoints RESTful** :
+  - **API Étudiants** (5 endpoints : `POST /students`, `GET /students`, `GET /students/:id`, `PUT /students/:id`, `DELETE /students/:id`)
+  - **API Cours** (5 endpoints : `POST /courses`, `GET /courses`, `GET /courses/:id`, `PUT /courses/:id`, `DELETE /courses/:id`)
+  - **API Inscriptions** (6 endpoints : `POST /subscriptions`, `GET /subscriptions/courses/:courseId`, `GET /subscriptions/courses/:courseId/students`, `GET /subscriptions/students/:studentId`, `GET /subscriptions/students/:studentId/courses`, `DELETE /subscriptions/:id`)
+- **Validation avec Joi** & Middlewares `express.json()`, `express.urlencoded()`.
+- **Gestion centralisée des erreurs** avec codes de statut HTTP appropriés (`400`, `404`, `500`).
+
+### 📖 Documentation & Démarrage
+1. **Lancement du serveur** :
+   ```bash
+   npm install
+   npm start
+   ```
+2. **Documentation des API** : Consultez le fichier [`API.md`](API.md).
+3. **Modèle de Rapport PDF** : Consultez le fichier [`RAPPORT_TEMPLATE.md`](RAPPORT_TEMPLATE.md).
+
+

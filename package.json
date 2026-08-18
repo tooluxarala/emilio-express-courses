@@ -1,0 +1,36 @@
+{
+  "name": "nodejs-express-courses",
+  "version": "1.0.0",
+  "description": "A Node.js Express course API",
+  "main": "server.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tooluxarala/nodejs-express-courses.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express",
+    "Scolar"
+  ],
+  "author": "Toolu Xarala",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/tooluxarala/nodejs-express-courses/issues"
+  },
+  "homepage": "https://github.com/tooluxarala/nodejs-express-courses#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "joi": "^18.2.3",
+    "moment": "^2.30.1",
+    "node-localstorage": "^3.0.5",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1"
+  }
+}
