@@ -1,5 +1,5 @@
 {
-  "name": "nodejs-express-courses",
+  "name": "emilio-express-courses",
   "version": "1.0.0",
   "description": "A Node.js Express course API",
   "main": "server.mjs",
@@ -9,19 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tooluxarala/nodejs-express-courses.git"
+    "url": "git+https://github.com/emiliomaganga/emilio-express-courses.git"
   },
   "keywords": [
     "Node.js",
     "Express",
     "Scolar"
   ],
-  "author": "Toolu Xarala",
+  "author": "Emilio Maganga",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/tooluxarala/nodejs-express-courses/issues"
+    "url": "https://github.com/emiliomaganga/emilio-express-courses/issues"
   },
-  "homepage": "https://github.com/tooluxarala/nodejs-express-courses#readme",
+  "homepage": "https://github.com/emiliomaganga/emilio-express-courses#readme",
   "devDependencies": {
     "nodemon": "^3.1.14"
   },

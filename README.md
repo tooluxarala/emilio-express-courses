@@ -6,21 +6,21 @@ Ce projet est une serie d'exercices pour apprendre et se familiariser avec Expre
 ### 1 - Ajouter NPM au projet 
 - Executer la commande ``npm init`` :
 ```
-package name: nodejs-express-courses 
+package name: emilio-express-courses 
 version: (1.0.0) 
 description: A Node.js Express course API
 entry point: server.mjs
 test command: 
 git repository: 
 keywords: Node.js, Express,Scolar
-author: Toolu Xarala
+author: Emilio Maganga
 license: (ISC) Apache-2.0
 
 ```
 - Vérifier que le fichier ``package.json`` est créé avec les bonnes valeurs
 ```
 {
-  "name": "odejs-express-courses",
+  "name": "emilio-express-courses",
   "version": "1.0.0",
   "description": "A Node.js Express course API",
   "main": "server.mjs",
@@ -33,7 +33,7 @@ license: (ISC) Apache-2.0
     "Express",
     "Scolar"
   ],
-  "author": "Toolu Xarala",
+  "author": "Emilio Maganga",
   "license": "Apache-2.0"
 }
 ```
@@ -100,11 +100,11 @@ let end = moment.now();
 import { LocalStorage } from 'node-localstorage';
 let localStorage = new LocalStorage('./student-course.db');
 
-localStorage.setItem('name', 'Toolu Xarala')
+localStorage.setItem('name', 'Emilio Maganga')
 console.log("Name: " + localStorage.getItem('name'))
 
 ```
-- Enregistrer le fichier. Vérifier que le log de démarrage ``"Name: Toolu Xarala"`` apparaît dans le terminal.
+- Enregistrer le fichier. Vérifier que le log de démarrage ``"Name: Emilio Maganga"`` apparaît dans le terminal.
 ### 5 - Installation de Express
 - Documentation: https://expressjs.com/
 - Executer la commande ``npm i express``
@@ -141,12 +141,12 @@ app.listen(port, () => {
     StudentService.add(
       {
         id: 1,
-        name: "Pathé NDIAYE",
-        number: "1A-B1"
+        name: "Grace Kalombo",
+        number: "STU-001"
       }
     );
     console.log("Add/get student: " + StudentService.get(1));
-    console.log("Add/get student: " + StudentService.get("1A-B1"));
+    console.log("Add/get student: " + StudentService.get("STU-001"));
     ```
   - Verifier que les deux logs apparaît dans le terminal
 - Ajouter une methode de class ``StudentService.update(student)`` qui permet de mettre à jour les infomations d'un étudiant (``id,name,number``) dans le ``localStorage``
@@ -155,12 +155,12 @@ app.listen(port, () => {
     StudentService.update(
       {
         id: 1,
-        name: "Ngoné DIENG",
-        number: "1A-B1"
+        name: "Grace K. Mwamba",
+        number: "STU-001"
       }
     );
     console.log("Update/get student: " + StudentService.get(1));
-    console.log("Update/get student: " + StudentService.get("1A-B1"));
+    console.log("Update/get student: " + StudentService.get("STU-001"));
     ```
   - Verifier que les deux logs apparaît dans le terminal
 - Ajouter une methode de class ``StudentService.delete([id or number])`` qui permet de supprimer les infomations d'un étudiant (``id,name,number``) du ``localStorage``
@@ -169,21 +169,21 @@ app.listen(port, () => {
     StudentService.add(
       {
         id: 2,
-        name: "Ndofène DIOUF",
-        number: "2A-B2"
+        name: "David Tshibangu",
+        number: "STU-002"
       }
     );
     StudentService.add(
       {
         id: 3,
-        name: "Lat DIOP",
-        number: "3A-B3"
+        name: "Sarah Ilunga",
+        number: "STU-003"
       }
     );
     StudentService.delete(2);
     console.log("Delete/get student: " + StudentService.get(2));
-    StudentService.delete("3A-B3");
-    console.log("Delete/get student: " + StudentService.get("3A-B3"));
+    StudentService.delete("STU-003");
+    console.log("Delete/get student: " + StudentService.get("STU-003"));
     ```
   - Verifier que les deux logs ``undefined`` apparaît dans le terminal
   ### 1 - Créer le service de gestion des cours
@@ -195,12 +195,12 @@ app.listen(port, () => {
     CourseService.add(
       {
         id: 1,
-        name: "Math",
-        code: "UE1"
+        name: "Web Development",
+        code: "CS101"
       }
     );
     console.log("Add/get course: " + CourseService.get(1));
-    console.log("Add/get course: " + CourseService.get("UE1"));
+    console.log("Add/get course: " + CourseService.get("CS101"));
     ```
   - Verifier que les deux logs apparaît dans le terminal
 - Ajouter une methode de class ``CourseService.update(course)`` qui permet de mettre à jour les infomations d'un cours (``id,name,code,credits``) dans le ``localStorage``
@@ -209,13 +209,13 @@ app.listen(port, () => {
     CourseService.update(
       {
         id: 1,
-        name: "Math",
-        code: "UE1",
-        credits: 7
+        name: "Web Development",
+        code: "CS101",
+        credits: 6
       }
     );
     console.log("Update/get course: " + CourseService.get(1));
-    console.log("Update/get course: " + CourseService.get("UE1"));
+    console.log("Update/get course: " + CourseService.get("CS101"));
     ```
   - Verifier que les deux logs apparaît dans le terminal
 - Ajouter une methode de class ``CourseService.delete([id or code])`` qui permet de supprimer les infomations d'un cours (``id,name,code,credits``) du ``localStorage``
@@ -224,23 +224,23 @@ app.listen(port, () => {
     CourseService.add(
       {
         id: 2,
-        name: "Computer science",
-        code: "UE2",
-        credits: 11
+        name: "Database Systems",
+        code: "CS102",
+        credits: 8
       }
     );
     CourseService.add(
       {
         id: 3,
-        name: "English",
-        code: "UE3",
+        name: "Software Engineering",
+        code: "CS103",
         credits: 5
       }
     );
     CourseService.delete(2);
     console.log("Delete/get course: " + CourseService.get(2));
-    CourseService.delete("UE3");
-    console.log("Delete/get course: " + CourseService.get("UE3"));
+    CourseService.delete("CS103");
+    console.log("Delete/get course: " + CourseService.get("CS103"));
     ```
   - Verifier que les deux logs ``undefined`` apparaît dans le terminal
 

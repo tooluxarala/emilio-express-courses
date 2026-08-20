@@ -22,23 +22,23 @@ Crée un nouvel étudiant dans le système.
 * **Corps attendu (Request Body)** :
   ```json
   {
-    "name": "Pathé NDIAYE",
-    "number": "1A-B1"
+    "name": "Grace Kalombo",
+    "number": "STU-001"
   }
   ```
 * **Réponse (201 Created)** :
   ```json
   {
     "id": 1,
-    "name": "Pathé NDIAYE",
-    "number": "1A-B1"
+    "name": "Grace Kalombo",
+    "number": "STU-001"
   }
   ```
 * **Exemple cURL** :
   ```bash
   curl -X POST http://localhost:3000/students \
     -H "Content-Type: application/json" \
-    -d '{"name": "Pathé NDIAYE", "number": "1A-B1"}'
+    -d '{"name": "Grace Kalombo", "number": "STU-001"}'
   ```
 
 ---
@@ -51,8 +51,8 @@ Récupère la liste de tous les étudiants.
   [
     {
       "id": 1,
-      "name": "Pathé NDIAYE",
-      "number": "1A-B1"
+      "name": "Grace Kalombo",
+      "number": "STU-001"
     }
   ]
   ```
@@ -66,13 +66,13 @@ Récupère la liste de tous les étudiants.
 ### `GET /students/:id`
 Récupère un étudiant par son **ID** numérique ou son **matricule / number**.
 
-* **Paramètres d'URL** : `:id` (ex: `1` ou `1A-B1`)
+* **Paramètres d'URL** : `:id` (ex: `1` ou `STU-001`)
 * **Réponse (200 OK)** :
   ```json
   {
     "id": 1,
-    "name": "Pathé NDIAYE",
-    "number": "1A-B1"
+    "name": "Grace Kalombo",
+    "number": "STU-001"
   }
   ```
 * **Réponse (404 Not Found)** :
@@ -96,23 +96,23 @@ Met à jour les informations d'un étudiant existant.
 * **Corps attendu (Request Body)** :
   ```json
   {
-    "name": "Ngoné DIENG",
-    "number": "1A-B1"
+    "name": "Grace K. Mwamba",
+    "number": "STU-001"
   }
   ```
 * **Réponse (200 OK)** :
   ```json
   {
     "id": 1,
-    "name": "Ngoné DIENG",
-    "number": "1A-B1"
+    "name": "Grace K. Mwamba",
+    "number": "STU-001"
   }
   ```
 * **Exemple cURL** :
   ```bash
   curl -X PUT http://localhost:3000/students/1 \
     -H "Content-Type: application/json" \
-    -d '{"name": "Ngoné DIENG"}'
+    -d '{"name": "Grace K. Mwamba"}'
   ```
 
 ---
@@ -120,7 +120,7 @@ Met à jour les informations d'un étudiant existant.
 ### `DELETE /students/:id`
 Supprime un étudiant du système.
 
-* **Paramètres d'URL** : `:id` (ex: `1` ou `1A-B1`)
+* **Paramètres d'URL** : `:id` (ex: `1` ou `STU-001`)
 * **Réponse (200 OK)** :
   ```json
   {
@@ -143,8 +143,8 @@ Ajoute un nouveau cours.
 * **Corps attendu (Request Body)** :
   ```json
   {
-    "name": "NodeJS & Express",
-    "code": "UE-NODE",
+    "name": "Web Development",
+    "code": "CS101",
     "credits": 6
   }
   ```
@@ -152,8 +152,8 @@ Ajoute un nouveau cours.
   ```json
   {
     "id": 1,
-    "name": "NodeJS & Express",
-    "code": "UE-NODE",
+    "name": "Web Development",
+    "code": "CS101",
     "credits": 6
   }
   ```
@@ -161,7 +161,7 @@ Ajoute un nouveau cours.
   ```bash
   curl -X POST http://localhost:3000/courses \
     -H "Content-Type: application/json" \
-    -d '{"name": "NodeJS & Express", "code": "UE-NODE", "credits": 6}'
+    -d '{"name": "Web Development", "code": "CS101", "credits": 6}'
   ```
 
 ---
@@ -174,8 +174,8 @@ Récupère la liste de tous les cours disponibles.
   [
     {
       "id": 1,
-      "name": "NodeJS & Express",
-      "code": "UE-NODE",
+      "name": "Web Development",
+      "code": "CS101",
       "credits": 6
     }
   ]
@@ -190,19 +190,19 @@ Récupère la liste de tous les cours disponibles.
 ### `GET /courses/:id`
 Récupère un cours par son **ID** ou son **code**.
 
-* **Paramètres d'URL** : `:id` (ex: `1` ou `UE-NODE`)
+* **Paramètres d'URL** : `:id` (ex: `1` ou `CS101`)
 * **Réponse (200 OK)** :
   ```json
   {
     "id": 1,
-    "name": "NodeJS & Express",
-    "code": "UE-NODE",
+    "name": "Web Development",
+    "code": "CS101",
     "credits": 6
   }
   ```
 * **Exemple cURL** :
   ```bash
-  curl -X GET http://localhost:3000/courses/UE-NODE
+  curl -X GET http://localhost:3000/courses/CS101
   ```
 
 ---
@@ -214,7 +214,7 @@ Met à jour un cours.
 * **Corps attendu (Request Body)** :
   ```json
   {
-    "name": "NodeJS & Express Avancé",
+    "name": "Web Development Avancé",
     "credits": 8
   }
   ```
@@ -222,8 +222,8 @@ Met à jour un cours.
   ```json
   {
     "id": 1,
-    "name": "NodeJS & Express Avancé",
-    "code": "UE-NODE",
+    "name": "Web Development Avancé",
+    "code": "CS101",
     "credits": 8
   }
   ```
@@ -233,7 +233,7 @@ Met à jour un cours.
 ### `DELETE /courses/:id`
 Supprime un cours.
 
-* **Paramètres d'URL** : `:id` (ex: `1` ou `UE-NODE`)
+* **Paramètres d'URL** : `:id` (ex: `1` ou `CS101`)
 * **Réponse (200 OK)** :
   ```json
   {
@@ -298,8 +298,8 @@ Récupère la liste des étudiants inscrits à un cours donné.
   [
     {
       "id": 1,
-      "name": "Pathé NDIAYE",
-      "number": "1A-B1"
+      "name": "Grace Kalombo",
+      "number": "STU-001"
     }
   ]
   ```
@@ -335,8 +335,8 @@ Récupère la liste des cours auxquels un étudiant est inscrit.
   [
     {
       "id": 1,
-      "name": "NodeJS & Express",
-      "code": "UE-NODE",
+      "name": "Web Development",
+      "code": "CS101",
       "credits": 6
     }
   ]
