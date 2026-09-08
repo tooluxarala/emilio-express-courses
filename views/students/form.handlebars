@@ -1,0 +1,14 @@
+<h1>{{#if isEdit}}Modifier l'étudiant{{else}}Nouvel étudiant{{/if}}</h1>
+
+{{> error-message}}
+
+<form method="POST" action="{{#if isEdit}}/app/students/{{student.id}}/edit{{else}}/app/students/new{{/if}}" class="form-card">
+  {{#with student}}
+  {{> form-input name="name" label="Nom complet" value=name required=true}}
+  {{> form-input name="number" label="Matricule" value=number required=true}}
+  {{/with}}
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">{{#if isEdit}}Enregistrer{{else}}Ajouter{{/if}}</button>
+    <a class="btn" href="/app/students">Annuler</a>
+  </div>
+</form>

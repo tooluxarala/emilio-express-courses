@@ -1,0 +1,6 @@
+{{#if success_msg.length}}
+  <div class="alert alert-success">{{#each success_msg}}<p>{{this}}</p>{{/each}}</div>
+{{/if}}
+{{#if error_msg.length}}
+  <div class="alert alert-error">{{#each error_msg}}<p>{{this}}</p>{{/each}}</div>
+{{/if}}

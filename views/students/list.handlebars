@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1>Étudiants</h1>
+  <a class="btn btn-primary" href="/app/students/new">+ Ajouter un étudiant</a>
+</div>
+
+<form class="search-bar" method="GET" action="/app/students">
+  <input type="text" name="q" placeholder="Rechercher par nom ou matricule…" value="{{query}}">
+  <button class="btn" type="submit">Rechercher</button>
+</form>
+
+{{#if students.length}}
+<table class="data-table">
+  <thead>
+    <tr><th>Nom</th><th>Matricule</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    {{#each students}}
+    <tr>
+      <td><a href="/app/students/{{id}}">{{name}}</a></td>
+      <td>{{number}}</td>
+      <td class="row-actions">
+        <a class="btn btn-sm" href="/app/students/{{id}}">Voir</a>
+        <a class="btn btn-sm" href="/app/students/{{id}}/edit">Modifier</a>
+        <form method="POST" action="/app/students/{{id}}/delete" onsubmit="return confirm('Supprimer cet étudiant ?');">
+          <button class="btn btn-sm btn-danger" type="submit">Supprimer</button>
+        </form>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div class="pagination">
+  {{#if hasPrev}}<a href="/app/students?page={{prevPage}}{{#if query}}&q={{query}}{{/if}}">&laquo; Précédent</a>{{/if}}
+  <span>Page {{currentPage}} / {{totalPages}}</span>
+  {{#if hasNext}}<a href="/app/students?page={{nextPage}}{{#if query}}&q={{query}}{{/if}}">Suivant &raquo;</a>{{/if}}
+</div>
+{{else}}
+  <p class="muted">Aucun étudiant trouvé.</p>
+{{/if}}

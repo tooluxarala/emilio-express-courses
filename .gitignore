@@ -153,3 +153,4 @@ dist
 *.db
 student-course.db/
 
+.DS_Store

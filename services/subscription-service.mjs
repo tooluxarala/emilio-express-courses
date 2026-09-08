@@ -31,6 +31,41 @@ class SubscriptionService {
     }
   }
 
+  static async getAll() {
+    try {
+      const db = await getDb();
+      const rows = await db.all(
+        `SELECT
+           sub.id, sub.student_id, sub.course_id, sub.subscribed_at,
+           s.id AS s_id, s.name AS s_name, s.number AS s_number,
+           c.id AS c_id, c.name AS c_name, c.code AS c_code, c.credits AS c_credits
+         FROM subscriptions sub
+         JOIN students s ON s.id = sub.student_id
+         JOIN courses c ON c.id = sub.course_id
+         ORDER BY sub.subscribed_at DESC`
+      );
+      return rows.map((row) => ({
+        id: row.id,
+        student_id: row.student_id,
+        course_id: row.course_id,
+        subscribed_at: row.subscribed_at,
+        student: { id: row.s_id, name: row.s_name, number: row.s_number },
+        course: { id: row.c_id, name: row.c_name, code: row.c_code, credits: row.c_credits }
+      }));
+    } catch (error) {
+      throw new Error(`Erreur lors de la récupération des inscriptions: ${error.message}`);
+    }
+  }
+
+  static async get(id) {
+    try {
+      const db = await getDb();
+      return await db.get('SELECT * FROM subscriptions WHERE id = ?', [id]);
+    } catch (error) {
+      throw new Error(`Erreur lors de la récupération de l'inscription: ${error.message}`);
+    }
+  }
+
   static async getByCourse(courseId) {
     try {
       const db = await getDb();

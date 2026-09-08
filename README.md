@@ -264,6 +264,36 @@ Ce projet a été complété et intègre désormais l'ensemble de la **Partie II
    npm start
    ```
 2. **Documentation des API** : Consultez le fichier [`API.md`](API.md).
-3. **Modèle de Rapport PDF** : Consultez le fichier [`RAPPORT_TEMPLATE.md`](RAPPORT_TEMPLATE.md).
+3. **Compte rendu Partie III** : Consultez le fichier [`RAPPORT.md`](RAPPORT.md).
 
+## IV. Interface graphique avec Express Handlebars
+
+Le projet intègre une interface web qui consomme les services développés en Partie II/III, construite avec **Express Handlebars**. Elle est montée sous le préfixe `/app` (l'API REST JSON de la Partie III reste inchangée sur les chemins racine `/students`, `/courses`, `/subscriptions`).
+
+### 🖥️ Pages disponibles
+- **Tableau de bord** (`/app`) : compteurs d'étudiants, de cours, d'inscriptions et de crédits ECTS cumulés, avec raccourcis d'action rapide.
+- **Étudiants** (`/app/students`) : liste paginée avec recherche par nom/matricule, fiche détail (`/app/students/:id`) listant les cours suivis, création (`/app/students/new`), modification (`/app/students/:id/edit`) et suppression.
+- **Cours** (`/app/courses`) : liste paginée, fiche détail listant les étudiants inscrits, création, modification et suppression.
+- **Inscriptions** (`/app/subscriptions`) : liste paginée, formulaire d'inscription avec sélection d'étudiant/cours, désinscription.
+- **Messages flash** : bannières de succès/erreur affichées après chaque opération (via `connect-flash` + `express-session`), auto-masquées après quelques secondes.
+
+### 🧩 Architecture technique
+- **Moteur de vues** : `express-handlebars`, layout par défaut `views/layouts/main.handlebars`.
+- **Helpers personnalisés** (`helpers/handlebars-helpers.mjs`) : `formatDate`, `eq`, `gt`, `sum`, `json`, `includes`, `slice`.
+- **Partials réutilisables** (`views/partials/`) : `navbar`, `footer`, `flash-messages`, `error-message`, `student-card`, `course-card`, `form-input`, `form-select`.
+- **Routes web** centralisées dans `routes/web-routes.mjs`, qui réutilisent directement `StudentService`, `CourseService` et `SubscriptionService`.
+- **Style responsive** : `public/css/style.css` (grille adaptative, tableaux transformés en cartes sur mobile).
+
+## V. Tests unitaires Jest & Compte rendu PDF
+
+Une suite de tests automatisés couvre les services métier, les schémas de validation Joi, le middleware d'erreur, les helpers Handlebars, l'API REST et l'interface web.
+
+```bash
+npm test        # exécute la suite Jest avec couverture de code
+npm run report   # régénère le compte rendu PDF (capture la couverture + génère le PDF)
+```
+
+- **Fichiers de tests** : `tests/student-service.test.mjs`, `tests/course-service.test.mjs`, `tests/subscription-service.test.mjs`, `tests/error-and-validation.test.mjs`, `tests/helpers.test.mjs`, `tests/api.test.mjs`, `tests/web.test.mjs`.
+- **Isolation** : chaque fichier de test utilise une base SQLite en mémoire (`DB_FILE=':memory:'`) réinitialisée avant chaque test, sans impact sur `database.sqlite`.
+- **Compte rendu** : Consultez [`Maganga_Emilio_Jest_Test_handlebars_Report.pdf`](Maganga_Emilio_Jest_Test_handlebars_Report.pdf).
 

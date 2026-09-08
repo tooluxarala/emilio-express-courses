@@ -1,5 +1,11 @@
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import express from 'express';
 import moment from 'moment';
+import { engine } from 'express-handlebars';
+import session from 'express-session';
+import flash from 'connect-flash';
+import methodOverride from 'method-override';
 import StudentService from './services/student-service.mjs';
 import CourseService from './services/course-service.mjs';
 import SubscriptionService from './services/subscription-service.mjs';
@@ -12,6 +18,10 @@ import {
   validateBody
 } from './middlewares/validation.mjs';
 import { errorHandler } from './middlewares/error-handler.mjs';
+import webRoutes from './routes/web-routes.mjs';
+import { handlebarsHelpers } from './helpers/handlebars-helpers.mjs';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const start = moment.now();
 
@@ -21,6 +31,36 @@ const port = process.env.PORT || 3000;
 // c. Middleware express.json & urlencoded
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')));
+
+/* ==========================================================================
+   Partie IV — Interface graphique avec Express Handlebars
+   ========================================================================== */
+
+app.engine('handlebars', engine({
+  defaultLayout: 'main',
+  extname: '.handlebars',
+  helpers: handlebarsHelpers
+}));
+app.set('view engine', 'handlebars');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'scolar_gestion_secret_key_2026',
+  resave: false,
+  saveUninitialized: true
+}));
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.now = new Date();
+  next();
+});
+
+app.use('/app', webRoutes);
 
 // Root Endpoint
 app.get('/', (req, res) => {
@@ -245,9 +285,13 @@ app.delete('/subscriptions/:id', async (req, res, next) => {
 // Middleware centralisé des erreurs (Doit être placé après toutes les routes)
 app.use(errorHandler);
 
-// Lancement du serveur Express
-app.listen(port, () => {
-  console.log(`Express app listening on port ${port}`);
-  const end = moment.now();
-  console.log(`Started Express in ${(end - start) / 1000}s`);
-});
+// Lancement du serveur Express (sauf en environnement de test, où Supertest gère son propre serveur)
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`Express app listening on port ${port}`);
+    const end = moment.now();
+    console.log(`Started Express in ${(end - start) / 1000}s`);
+  });
+}
+
+export default app;

@@ -6,7 +6,7 @@ let dbInstance = null;
 export async function getDb() {
   if (!dbInstance) {
     dbInstance = await open({
-      filename: './database.sqlite',
+      filename: process.env.DB_FILE || './database.sqlite',
       driver: sqlite3.Database
     });
 

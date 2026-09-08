@@ -1,0 +1,9 @@
+<div class="form-group">
+  <label for="{{name}}">{{label}}</label>
+  <select id="{{name}}" name="{{name}}" {{#if required}}required{{/if}}>
+    <option value="">-- Sélectionner --</option>
+    {{#each options}}
+      <option value="{{this.id}}" {{#if (eq this.id ../selected)}}selected{{/if}}>{{this.label}}</option>
+    {{/each}}
+  </select>
+</div>

@@ -1,0 +1,12 @@
+<div class="form-group">
+  <label for="{{name}}">{{label}}</label>
+  <input
+    type="{{#if type}}{{type}}{{else}}text{{/if}}"
+    id="{{name}}"
+    name="{{name}}"
+    value="{{value}}"
+    placeholder="{{placeholder}}"
+    {{#if required}}required{{/if}}
+    {{#if min}}min="{{min}}"{{/if}}
+  >
+</div>

@@ -4,12 +4,13 @@
   "description": "A Node.js Express course API",
   "main": "server.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.mjs"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --coverage",
+    "start": "nodemon server.mjs",
+    "report": "node scripts/generate-pdf-report.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/emiliomaganga/emilio-express-courses.git"
+    "url": "git+https://github.com/tooluxarala/emilio-express-courses.git"
   },
   "keywords": [
     "Node.js",
@@ -19,15 +20,22 @@
   "author": "Emilio Maganga",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/emiliomaganga/emilio-express-courses/issues"
+    "url": "https://github.com/tooluxarala/emilio-express-courses/issues"
   },
-  "homepage": "https://github.com/emiliomaganga/emilio-express-courses#readme",
+  "homepage": "https://github.com/tooluxarala/emilio-express-courses#readme",
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "jest": "^30.5.1",
+    "nodemon": "^3.1.14",
+    "puppeteer": "^25.10.0",
+    "supertest": "^7.2.2"
   },
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "express": "^5.2.1",
+    "express-handlebars": "^9.0.1",
+    "express-session": "^1.19.0",
     "joi": "^18.2.3",
+    "method-override": "^3.0.0",
     "moment": "^2.30.1",
     "node-localstorage": "^3.0.5",
     "sqlite": "^5.1.1",

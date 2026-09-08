@@ -1,0 +1,50 @@
+<h1>Tableau de bord</h1>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <span class="stat-value">{{studentCount}}</span>
+    <span class="stat-label">Étudiants</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-value">{{courseCount}}</span>
+    <span class="stat-label">Cours</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-value">{{subscriptionCount}}</span>
+    <span class="stat-label">Inscriptions</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-value">{{totalCredits}}</span>
+    <span class="stat-label">Crédits ECTS proposés</span>
+  </div>
+</div>
+
+<div class="actions-row">
+  <a class="btn btn-primary" href="/app/students/new">+ Nouvel étudiant</a>
+  <a class="btn btn-primary" href="/app/courses/new">+ Nouveau cours</a>
+  <a class="btn btn-primary" href="/app/subscriptions/new">+ Nouvelle inscription</a>
+</div>
+
+<div class="two-columns">
+  <section>
+    <h2>Derniers étudiants</h2>
+    {{#if recentStudents.length}}
+      <div class="card-grid">
+        {{#each recentStudents}}{{> student-card}}{{/each}}
+      </div>
+    {{else}}
+      <p class="muted">Aucun étudiant enregistré pour le moment.</p>
+    {{/if}}
+  </section>
+
+  <section>
+    <h2>Derniers cours</h2>
+    {{#if recentCourses.length}}
+      <div class="card-grid">
+        {{#each recentCourses}}{{> course-card}}{{/each}}
+      </div>
+    {{else}}
+      <p class="muted">Aucun cours enregistré pour le moment.</p>
+    {{/if}}
+  </section>
+</div>

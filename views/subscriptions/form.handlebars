@@ -1,0 +1,12 @@
+<h1>Nouvelle inscription</h1>
+
+{{> error-message}}
+
+<form method="POST" action="/app/subscriptions/new" class="form-card">
+  {{> form-select name="student_id" label="Étudiant" options=studentOptions selected=selectedStudentId required=true}}
+  {{> form-select name="course_id" label="Cours" options=courseOptions selected=selectedCourseId required=true}}
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">Inscrire</button>
+    <a class="btn" href="/app/subscriptions">Annuler</a>
+  </div>
+</form>

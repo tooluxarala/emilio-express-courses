@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h1>{{course.name}}</h1>
+  <div class="row-actions">
+    <a class="btn" href="/app/courses/{{course.id}}/edit">Modifier</a>
+    <form method="POST" action="/app/courses/{{course.id}}/delete" onsubmit="return confirm('Supprimer ce cours ?');">
+      <button class="btn btn-danger" type="submit">Supprimer</button>
+    </form>
+  </div>
+</div>
+
+<p class="muted">Code : {{course.code}} &middot; {{course.credits}} crédits</p>
+
+<h2>Étudiants inscrits</h2>
+{{#if students.length}}
+  <div class="card-grid">
+    {{#each students}}{{> student-card}}{{/each}}
+  </div>
+{{else}}
+  <p class="muted">Aucun étudiant inscrit à ce cours.</p>
+{{/if}}
+
+<a class="btn btn-primary" href="/app/subscriptions/new?course_id={{course.id}}">+ Inscrire un étudiant</a>

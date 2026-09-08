@@ -1,0 +1,60 @@
+📋 Travail à rendre
+
+Partie III : Micro-service/API de gestion des cours (devoir maison)
+
+Vous devez implémenter les endpoints REST suivants selon la documentation du README.md (Partie III) :
+API REST de gestion des étudiants (5 endpoints)
+API REST de gestion des cours (5 endpoints)
+API REST de gestion des inscriptions (6 endpoints)
+Base de données SQLite (remplacer le localStorage)
+Améliorations :
+Gestion des erreurs avec blocs try-catch
+Validation des données
+Middleware express.json
+Documentation API en fichier API.md
+📂 Livraison du travail
+
+1. Code source
+Créer un repository GitHub public ou privé
+Y ajouter votre code complet du projet Express
+Le repository doit contenir :
+Tous les fichiers du projet (server.mjs, services, etc.)
+Un fichier README.md décrivant le projet et comment le lancer
+Un fichier API.md documentant tous les endpoints
+Le fichier .gitignore (contenant node_modules/, .env, etc.)
+
+2. Compte rendu en PDF
+Format : Rapport PDF (2 à 4 pages)
+Contenu obligatoire :
+Titre, nom et prénom, date
+Partie 1 : Résumé des deux séances Express (concepts clés apris)
+Partie 2 : Description du projet développé (objectif, architecture, services)
+Partie 3 : Difficultés rencontrées et solutions apportées
+Partie 4 : Améliorations effectuées et fonctionnalités bonus
+Conclusion : Ce que vous avez appris et points clés à retenir
+Annexe : Lien du repository GitHub
+
+📅 Date limite de remise
+
+Mardi 18 août
+À envoyer par email avec :
+
+Objet : [Nom-Prénom] Devoir Express - Partie III
+Corps : Lien du repository GitHub + fichier PDF en pièce jointe
+
+⚠️ Critères d'évaluation
+
+✅ Tous les endpoints implémentés et fonctionnels
+✅ Base de données SQLite bien configurée
+✅ Gestion des erreurs appropriée
+✅ Code propre et bien rédigé
+✅ Documentation API complète
+✅ Repository GitHub bien organisé
+✅ Compte rendu clair et complet
+
+💡 Conseils
+Testez chaque endpoint avec Postman avant de livrer
+Assurez-vous que le projet démarre sans erreur (npm start)
+Commitez régulièrement votre code sur GitHub
+
+👉 N'oubliez pas d'ajouter un .gitignore pour exclure node_modules

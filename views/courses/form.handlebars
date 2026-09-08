@@ -1,0 +1,15 @@
+<h1>{{#if isEdit}}Modifier le cours{{else}}Nouveau cours{{/if}}</h1>
+
+{{> error-message}}
+
+<form method="POST" action="{{#if isEdit}}/app/courses/{{course.id}}/edit{{else}}/app/courses/new{{/if}}" class="form-card">
+  {{#with course}}
+  {{> form-input name="name" label="Nom du cours" value=name required=true}}
+  {{> form-input name="code" label="Code du cours" value=code required=true}}
+  {{> form-input name="credits" label="Crédits ECTS" value=credits type="number" min=0}}
+  {{/with}}
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit">{{#if isEdit}}Enregistrer{{else}}Ajouter{{/if}}</button>
+    <a class="btn" href="/app/courses">Annuler</a>
+  </div>
+</form>
